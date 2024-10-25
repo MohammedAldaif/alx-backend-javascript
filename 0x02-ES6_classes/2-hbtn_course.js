@@ -1,9 +1,9 @@
 // 2-hbtn_course.js
 class HolbertonCourse {
   constructor(name, length, students) {
-    this._validateString(name, 'Name');
-    this._validateNumber(length, 'Length');
-    this._validateArrayOfStrings(students, 'Students');
+    HolbertonCourse._validateString(name, 'Name');
+    HolbertonCourse._validateNumber(length, 'Length');
+    HolbertonCourse._validateArrayOfStrings(students, 'Students');
 
     this._name = name;
     this._length = length;
@@ -15,7 +15,7 @@ class HolbertonCourse {
   }
 
   set name(newName) {
-    this._validateString(newName, 'Name');
+    HolbertonCourse._validateString(newName, 'Name');
     this._name = newName;
   }
 
@@ -24,7 +24,7 @@ class HolbertonCourse {
   }
 
   set length(newLength) {
-    this._validateNumber(newLength, 'Length');
+    HolbertonCourse._validateNumber(newLength, 'Length');
     this._length = newLength;
   }
 
@@ -33,23 +33,23 @@ class HolbertonCourse {
   }
 
   set students(newStudents) {
-    this._validateArrayOfStrings(newStudents, 'Students');
+    HolbertonCourse._validateArrayOfStrings(newStudents, 'Students');
     this._students = newStudents;
   }
 
-  _validateString(value, attribute) {
+  static _validateString(value, attribute) {
     if (typeof value !== 'string') {
       throw new TypeError(`${attribute} must be a string`);
     }
   }
 
-  _validateNumber(value, attribute) {
+  static _validateNumber(value, attribute) {
     if (typeof value !== 'number') {
       throw new TypeError(`${attribute} must be a number`);
     }
   }
 
-  _validateArrayOfStrings(value, attribute) {
+  static _validateArrayOfStrings(value, attribute) {
     if (!Array.isArray(value) || !value.every((el) => typeof el === 'string')) {
       throw new TypeError(`${attribute} must be an array of strings`);
     }
